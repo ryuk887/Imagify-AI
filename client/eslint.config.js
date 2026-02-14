@@ -22,8 +22,14 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
+    plugins: {
+      React,
+      prettier,
+    },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off'
     },
   },
 ])
