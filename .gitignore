@@ -1,0 +1,82 @@
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Node / Package Managers
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# =========================
+# Backend (Node / Express)
+# =========================
+logs/
+*.log
+coverage/
+dist/
+build/
+
+# =========================
+# Frontend (React)
+# =========================
+client/node_modules/
+client/build/
+client/dist/
+
+# If React app is at root
+/build
+/dist
+
+# =========================
+# Tailwind CSS
+# =========================
+.tailwindcache
+.cache/
+.postcss-cache/
+
+# =========================
+# MongoDB
+# =========================
+data/
+mongo-data/
+
+# =========================
+# Testing
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# Misc
+# =========================
+*.swp
+*.tmp
+*.bak
