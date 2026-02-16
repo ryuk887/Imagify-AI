@@ -1,9 +1,9 @@
-import { userModel } from "../models/userModel";
+import { userModel } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../utils/apiErrors";
-import { ApiResponse } from "../utils/apiResponse";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/apiErrors.js";
+import { ApiResponse } from "../utils/apiResponse.js";
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -58,3 +58,25 @@ const loginUser = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, { token, user }, "user Login successful"));
 });
+
+const userCredit = asyncHandler(async (req, res) => {
+  const { id } = req.user;
+  if (!id) {
+    throw new ApiError(401, "User id is required");
+  }
+  const user = await userModel.findById(id);
+  if (!user) {
+    throw new ApiError(402, "user not found");
+  }
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        { name: user.name, creditBalance: user.creditBalance },
+        "user credits fetched successfully",
+      ),
+    );
+});
+
+export { registerUser, loginUser, userCredit };
