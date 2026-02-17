@@ -73,7 +73,7 @@ const userCredit = asyncHandler(async (req, res) => {
     .json(
       new ApiResponse(
         200,
-        { name: user.name, creditBalance: user.creditBalance },
+        { user, creditBalance: user.creditBalance },
         "user credits fetched successfully",
       ),
     );
