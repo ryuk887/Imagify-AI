@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "imagify-ai-ashen.vercel.app",
+    origin: "https://imagify-ai-ashen.vercel.app",
     credentials: true,
   }),
 );
