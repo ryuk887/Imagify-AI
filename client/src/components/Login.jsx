@@ -36,7 +36,7 @@ const Login = () => {
           email,
           password,
         });
-        if (data.sucess) {
+        if (data.statusCode === 200) {
           setToken(data.data.token);
           setUser(data.data.user);
           localStorage.setItem('token', data.data.token);

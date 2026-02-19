@@ -2,27 +2,35 @@ import React, { useState } from 'react';
 import { assets } from '../assets/assets';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
+  const navigate = useNavigate();
 
-  const { generateImage } = useContext(AppContext);
+  const { generateImage, credit } = useContext(AppContext);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    console.log(input);
-    if (input) {
-      const image = await generateImage(input);
-      if (image) {
-        setIsImageLoaded(true);
-        setImage(image);
+    if (credit === 0) {
+      navigate('/buy');
+      toast.error('No Credit Balance');
+    } else {
+      setLoading(true);
+      console.log(input);
+      if (input) {
+        const image = await generateImage(input);
+        if (image) {
+          setIsImageLoaded(true);
+          setImage(image);
+        }
       }
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
