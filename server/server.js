@@ -9,7 +9,12 @@ import imageRouter from "./routes/imageRoutes.js";
 const PORT = process.env.PORT || 4000;
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "imagify-ai-ashen.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 connectDB();
