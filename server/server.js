@@ -9,9 +9,14 @@ import imageRouter from "./routes/imageRoutes.js";
 const PORT = process.env.PORT || 4000;
 const app = express();
 
+const origins = [
+  "http://localhost:5173/",
+  "https://imagify-ai-ashen.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "https://imagify-ai-ashen.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true,
   }),
 );

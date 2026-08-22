@@ -6,7 +6,7 @@ import { AppContext } from '../context/AppContext';
 const Navbar = () => {
   const { user, setShowLogin, logout, credit } = useContext(AppContext);
   const navigate = useNavigate();
-  console.log(user);
+  // console.log(user);
   return (
     <div className="flex items-center justify-between py-4">
       <Link to="/">
